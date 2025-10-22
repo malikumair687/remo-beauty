@@ -74,7 +74,7 @@ const Navbar = () => {
         <div>
           <Link
             to="/"
-            className={`text-3xl font-bold font-mono tracking-wide transition-colors duration-300 ${
+            className={`text-3xl hidden xl:block font-bold font-mono tracking-wide transition-colors duration-300 ${
               isScrolled ? "text-black" : "text-white"
             }`}
           >

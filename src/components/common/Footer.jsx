@@ -40,7 +40,7 @@ const supportiveLink = [
 
 const Footer = () => {
   return (
-    <footer className="p-5 bg-[#E2E7F1]">
+    <footer className="p-5  bg-[#E2E7F1]">
       <div className="flex flex-col xl:flex-row pb-5 justify-between flex-wrap">
         {/* LEFT SIDE */}
         <div className="max-w-lg">
