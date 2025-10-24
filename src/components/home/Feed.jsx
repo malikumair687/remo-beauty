@@ -25,7 +25,7 @@ const iconAry = [
 
 const Feed = () => {
   return (
-    <div className="p-4 sm:p-5 md:p-6 lg:p-8">
+    <div className="p-4 bg-[#E2E7F1] sm:p-5 md:p-6 lg:p-8">
       <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-2 uppercase">
         shop the feed
       </h1>

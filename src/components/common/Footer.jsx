@@ -5,16 +5,16 @@ const itemLink = [
   {
     heading: "SHOP",
     subheading: [
-      { name: "Best Sellers", path: "/bestSellers" },
-      { name: "Makeup", path: "/makeup" },
+      { name: "Best Sellers", path: "/bestseller" },
+      { name: "Makeup", path: "/bestseller" },
       { name: "Skincare", path: "/skincare" },
-      { name: "Sets", path: "/sets" },
+      { name: "Sets", path: "/" },
     ],
   },
   {
     heading: "NAVIGATION",
     subheading: [
-      { name: "Our Vision", path: "/ourVision" },
+      { name: "Our Vision", path: "/about" },
       { name: "FAQ", path: "/faq" },
       { name: "Returns & Exchanges", path: "/returns" },
     ],

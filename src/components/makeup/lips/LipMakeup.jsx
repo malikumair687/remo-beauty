@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import img1 from "/public/home/skin1.webp";
 import img2 from "/public/home/skin2.webp";
@@ -10,13 +10,13 @@ import img7 from "/public/home/skin7.webp";
 import img8 from "/public/home/skin8.webp";
 
 const ItemNamAry = [
-  { id: 1, name: "ALL" },
-  { id: 2, name: "BestSellers" },
-  { id: 3, name: "New" },
-  { id: 4, name: "Eyes" },
-  { id: 5, name: "Lips" },
-  { id: 6, name: "Face" },
-  { id: 7, name: "Sets" },
+  { id: 1, name: "Lip Gloss" },
+  { id: 2, name: "Lip Oil" },
+  { id: 3, name: "Lipstick" },
+  { id: 4, name: "Lip Stain" },
+  { id: 5, name: "lip balm" },
+  { id: 6, name: "lip liner" },
+  
 ];
 
 const PrdctAry = [
@@ -86,22 +86,42 @@ const PrdctAry = [
   },
 ];
 
-const Hero = () => {
+const LipMakeup = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const productsPerPage = 4;
+  const totalPages = Math.ceil(PrdctAry.length / productsPerPage);
+
+  // Get current products
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const currentProducts = PrdctAry.slice(indexOfFirstProduct, indexOfLastProduct);
+
+  // Handle page change
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
-    <div className=" min-h-screen">
-      <div className=" px-5 mt-30 sm:px-10 sm:mt-24">
+    <div className="min-h-screen">
+      <div className="px-5 mt-30 sm:px-10 sm:mt-24">
         {/* Breadcrumb */}
         <div className="flex items-center gap-2 text-gray-500 text-sm mb-3">
           <Link to="/" className="hover:underline text-gray-600">
             Home
           </Link>
           <span>/</span>
-          <span className="text-gray-800">Skincare</span>
+          <span className="text-gray-800">lip makeup
+
+</span>
         </div>
 
         {/* Title */}
         <h1 className="text-5xl font-bold text-gray-900 mb-6 tracking-tight">
-          Skincare <sub className="text-gray-500 text-lg">[12]</sub>
+          lip makeup
+
+
+          <sub className="text-gray-500 text-lg">[12]</sub>
         </h1>
 
         {/* Category bar + sort section */}
@@ -110,7 +130,7 @@ const Hero = () => {
             {ItemNamAry.map((item) => (
               <li
                 key={item.id}
-                className="cursor-pointer hover:text-black text-lg relative after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-black after:left-0 after:-bottom-1 hover:after:w-full after:transition-all"
+                className="cursor-pointer uppercase hover:text-black text-sm relative after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-black after:left-0 after:-bottom-1 hover:after:w-full after:transition-all"
               >
                 {item.name}
               </li>
@@ -129,7 +149,7 @@ const Hero = () => {
 
       {/* Product Cards */}
       <div className="px-3 sm:px-10 sm:py-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-10">
-        {PrdctAry.map((product) => (
+        {currentProducts.map((product) => (
           <div
             key={product.id}
             className="group bg-gray-50 shadow-md rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col"
@@ -166,8 +186,58 @@ const Hero = () => {
           </div>
         ))}
       </div>
+
+      {/* Pagination */}
+      <div className="flex justify-center items-center mt-12 mb-8">
+        <div className="flex items-center gap-2">
+          {/* Previous Button */}
+          <button
+            onClick={() => handlePageChange(currentPage - 1)}
+            disabled={currentPage === 1}
+            className={`px-4 py-2 cursor-pointer rounded-md border border-gray-300 text-sm font-medium transition-all duration-200 ${
+              currentPage === 1
+                ? "text-gray-400 cursor-not-allowed bg-gray-100"
+                : "text-gray-700 hover:bg-gray-50 hover:border-gray-400"
+            }`}
+          >
+            Prev
+          </button>
+
+          {/* Page Numbers */}
+          {[...Array(totalPages)].map((_, index) => {
+            const pageNumber = index + 1;
+            return (
+              <button
+                key={pageNumber}
+                onClick={() => handlePageChange(pageNumber)}
+                className={`w-10 h-10 cursor-pointer rounded-md text-sm font-medium transition-all duration-200 ${
+                  currentPage === pageNumber
+                    ? "bg-black text-white border border-black"
+                    : "text-gray-700 border border-gray-300 hover:bg-gray-50"
+                }`}
+              >
+                {pageNumber}
+              </button>
+            );
+          })}
+
+          {/* Next Button */}
+          <button
+            onClick={() => handlePageChange(currentPage + 1)}
+            disabled={currentPage === totalPages}
+            className={`px-4 py-2 cursor-pointer rounded-md border border-gray-300 text-sm font-medium transition-all duration-200 ${
+              currentPage === totalPages
+                ? "text-gray-400 cursor-not-allowed bg-gray-100"
+                : "text-gray-700 hover:bg-gray-50 hover:border-gray-400"
+            }`}
+          >
+            Next
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default Hero;
+export default LipMakeup;
+

@@ -10,13 +10,13 @@ import img7 from "/public/home/skin7.webp";
 import img8 from "/public/home/skin8.webp";
 
 const ItemNamAry = [
-  { id: 1, name: "ALL" },
-  { id: 2, name: "BestSellers" },
-  { id: 3, name: "New" },
-  { id: 4, name: "Eyes" },
-  { id: 5, name: "Lips" },
-  { id: 6, name: "Face" },
-  { id: 7, name: "Sets" },
+  { id: 1, name: "full collection" },
+  { id: 2, name: "bundles" },
+  { id: 3, name: "character sets" },
+  { id: 4, name: "palettes" },
+  { id: 5, name: "eyes" },
+  { id: 6, name: "lips" },
+  
 ];
 
 const PrdctAry = [
@@ -86,7 +86,7 @@ const PrdctAry = [
   },
 ];
 
-const Hero = () => {
+const BeautyWicked = () => {
   return (
     <div className=" min-h-screen">
       <div className=" px-5 mt-30 sm:px-10 sm:mt-24">
@@ -101,7 +101,7 @@ const Hero = () => {
 
         {/* Title */}
         <h1 className="text-5xl font-bold text-gray-900 mb-6 tracking-tight">
-          Skincare <sub className="text-gray-500 text-lg">[12]</sub>
+          r.e.m. beauty x Wicked: For Good <sub className="text-gray-500 text-lg">[12]</sub>
         </h1>
 
         {/* Category bar + sort section */}
@@ -110,7 +110,7 @@ const Hero = () => {
             {ItemNamAry.map((item) => (
               <li
                 key={item.id}
-                className="cursor-pointer hover:text-black text-lg relative after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-black after:left-0 after:-bottom-1 hover:after:w-full after:transition-all"
+                className="cursor-pointer uppercase hover:text-black text-sm relative after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-black after:left-0 after:-bottom-1 hover:after:w-full after:transition-all"
               >
                 {item.name}
               </li>
@@ -170,4 +170,6 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default BeautyWicked;
+
+
